@@ -25,7 +25,8 @@ const store = createStore(reducers,compose(
 ReactDom.render(
     (<Provider store={store}>
         <Router>
-                
+            <Route path="/login" component={Login}></Route>
+            <Route path="/register" component={Register}></Route>
         </Router>     
     </Provider>), 
     document.getElementById('root')
