@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Toast } from 'antd-mobile'
-import { setTimeout } from 'timers';
+
 //拦截请求
 axios.interceptors.request.use(function(config){
     Toast.loading('加载中',0)
