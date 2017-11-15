@@ -40,21 +40,21 @@ class Register extends React.Component{
                         type="password"
                         onChange={v => this.handleChange('repeatpwd',v)}
                         >确认密码</InputItem>
+                    <RadioItem 
+                        checked={this.state.type === 'genius'}
+                        onChange={() => this.handleChange('type','genius')}
+                        >
+                        牛人
+                    </RadioItem>
+                    <RadioItem 
+                        checked={this.state.type === 'boss'}
+                        onChange={() => this.handleChange('type','boss')}
+                        >
+                        BOSS
+                    </RadioItem>
+                    <WhiteSpace />
+                    <Button type="primary" onClick={this.handleRegister}>注册</Button>
                 </List>
-                <RadioItem 
-                    checked={this.state.type === 'genius'}
-                    onChange={() => this.handleChange('type','genius')}
-                    >
-                    牛人
-                </RadioItem>
-                <RadioItem 
-                    checked={this.state.type === 'boss'}
-                    onChange={() => this.handleChange('type','boss')}
-                    >
-                    BOSS
-                </RadioItem>
-                <WhiteSpace />
-                <Button type="primary" onClick={this.handleRegister}>注册</Button>
                 </WingBlank>
             </div>
         )
