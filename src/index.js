@@ -13,7 +13,9 @@ import {
     Redirect,
     Switch
   } from 'react-router-dom'
-  import './config'
+import './config'
+import './index.css'
+
   
 
 

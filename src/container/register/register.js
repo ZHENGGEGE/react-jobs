@@ -1,6 +1,14 @@
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import { List, InputItem,Button, WhiteSpace, WingBlank,Radio} from 'antd-mobile';
+import { connect } from 'react-redux'
+import { register } from '../../redux/user.redux'
+import { error } from 'util';
+
+@connect(
+    state => state.user,
+    { register }
+)
 
 
 class Register extends React.Component{
@@ -20,7 +28,7 @@ class Register extends React.Component{
         })
     }
     handleRegister(){
-        console.log(this.state)
+        this.props.register(this.state)
     }
     render(){
         const RadioItem = Radio.RadioItem;
@@ -29,6 +37,7 @@ class Register extends React.Component{
                 <Logo></Logo>
                 <WingBlank>
                 <List>
+                    {this.props.msg?<p className="error-msg">{this.props.msg}</p>:null}
                     <InputItem onChange={v => this.handleChange('user',v)}>用户名</InputItem>
                     <WhiteSpace />
                     <InputItem 
