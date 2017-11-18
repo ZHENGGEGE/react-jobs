@@ -1,9 +1,11 @@
 import axios from 'axios'
+import {getRedirectPath} from '../util'
 
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const ERR_MSG = 'ERR_MSG'
 
 const initState = {
+    redirectTo : '',
     isAuth : false,
     msg : '',
     user : '',
@@ -15,7 +17,7 @@ const initState = {
 export function user(state =initState ,action){
     switch(action.type){
         case REGISTER_SUCCESS : 
-            return { ...state,msg : '',isAuth : true,...action.payload }
+            return { ...state,msg : '',redirectTo:getRedirectPath(action.payload),isAuth : true,...action.payload }
         case ERR_MSG : 
             return { ...state,isAuth : false, msg:action.msg}
         default : 

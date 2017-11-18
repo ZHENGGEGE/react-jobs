@@ -24,5 +24,11 @@ const models = {
 }
 
 for (let m in models){
-    
+    mongoose.model(m,new mongoose.Schema(models[m]))
+}
+
+module.exports = {
+    getModel : function(name){
+        return mongoose.model(name)
+    }
 }
