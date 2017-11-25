@@ -18,7 +18,11 @@ class BossInfo extends React.Component{
         return(
             <div>
                 <NavBar mode="dark">BOSS完善信息页面</NavBar>
-                <AvatarSelector></AvatarSelector>
+                <AvatarSelector selectAvatar={(imgname) => {
+                    this.setState({
+                        avatar : imgname
+                    })
+                }}></AvatarSelector>
                 <InputItem onChange={(v)=>this.handleChange('title',v)}>
                     招聘职位
                 </InputItem>
