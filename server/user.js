@@ -13,7 +13,7 @@ Router.get('/list',function(req,res){
 })
 
 Router.post('/update',function(req,res){
-    const userid = req.cookies
+    const userid = req.cookies.userid
     if(!userid){
         return res.json({code : 1})
     }
@@ -23,7 +23,7 @@ Router.post('/update',function(req,res){
             user:doc.user,
             type:doc.type
         },body)
-        return {code : 0,data}
+        return res.json({code : 0,data})
     })
 })
 
