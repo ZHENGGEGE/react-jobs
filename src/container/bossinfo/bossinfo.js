@@ -1,6 +1,14 @@
 import React from 'react'
-import { NavBar,InputItem,TextareaItem } from 'antd-mobile';
+import { NavBar,InputItem,TextareaItem,Button } from 'antd-mobile';
 import AvatarSelector from '../../component/avatar-selector/avatar-selector'
+import { connect } from 'react-redux'
+import { update } from '../../redux/user.redux'
+
+
+@connect(
+    state => state.user,
+    { update }
+)
 
 class BossInfo extends React.Component{
     constructor(props){
@@ -39,6 +47,11 @@ class BossInfo extends React.Component{
                         >
                     
                 </TextareaItem>
+                <Button 
+                    onClick={() => {
+                        this.props.update(this.state)
+                    }}
+                    type='primary'>保存</Button>
             </div>
         )
     }
