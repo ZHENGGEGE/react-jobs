@@ -4,6 +4,7 @@ import {getRedirectPath} from '../util'
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERR_MSG = 'ERR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
+const LOGOUT = 'LOGOUT'
 
 const initState = {
     redirectTo : '',
@@ -21,6 +22,8 @@ export function user(state =initState ,action){
             return {...state,isAuth : false,msg:action.msg}
         case LOAD_DATA : 
             return {...state,...action.payload }
+        case LOGOUT : 
+            return {...initState,redirectTo:'/login'}
         default : 
             return state
     }
@@ -48,13 +51,17 @@ export function loadData(userinfo){
     return {
         type : LOAD_DATA,
         payload : userinfo
-    }
-   
+    }  
     //是否登录
     //现在的url地址  login是不需要跳转的
-
     //用户的type  是boss还是牛人
     //用户是否完善信息   （选择头像，个人简介）
+}
+
+export function logoutSubmit(){
+    return {
+        type : LOGOUT
+    }
 }
 
 export function update(data){

@@ -28,6 +28,7 @@ class UserCard extends React.Component{
                     </Body>
                 </Card>):null
             })}
+            
         </WingBlank>
         )
     }
