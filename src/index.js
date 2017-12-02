@@ -9,11 +9,11 @@ import BossInfo from './container/bossinfo/bossinfo'
 import GeniusInfo from './container/geniusinfo/geniusinfo'
 import DashBoard from './component/dashboard/dashboard'
 import AuthRouth from './component/authroute/authroute'
+import Chat from './component/chat/chat'
 import reducers from './reducer'
 import {
     BrowserRouter,
     Route,
-    Redirect,
     Switch
   } from 'react-router-dom'
 import './config'
@@ -28,10 +28,10 @@ const store = createStore(reducers,compose(
     reduxDevtools
 ))
 
-function Boss(){
-        return <h2>boss页面</h2>
+// function Boss(){
+//         return <h2>boss页面</h2>
     
-}
+// }
 
 
 ReactDom.render(
@@ -44,6 +44,7 @@ ReactDom.render(
                 <Route path="/bossinfo" component={BossInfo}></Route>
                 <Route path='/login' component={Login}></Route>
                 <Route path='/register' component={Register}></Route>
+                <Route path='/chat/:user' component={Chat}></Route>
                 <Route component={DashBoard}></Route>
                 </Switch>
             </div>
