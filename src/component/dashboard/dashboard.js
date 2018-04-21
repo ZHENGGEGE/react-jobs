@@ -20,7 +20,7 @@ function Msg(){
 class DashBoard extends  React.Component{  
     render(){
         const user = this.props.user
-        const {pathname} = this.props.location
+		const {pathname} = this.props.location
         const navList = [
 			{
 				path:'/boss',
