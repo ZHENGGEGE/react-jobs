@@ -6,7 +6,7 @@ import { Route,Switch } from 'react-router-dom'
 import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
 import User from '../../component/user/user'
-
+import {getMsgList,recvMsg} from '../../redux/chat.redux'
 
 function Msg(){
     return <h2>Msg</h2>
@@ -14,10 +14,15 @@ function Msg(){
 
 
 @connect(
-    state => state
+	state => state,
+	{getMsgList,recvMsg}
 )
 
 class DashBoard extends  React.Component{  
+	componentDidMount(){
+        this.props.getMsgList();
+        this.props.recvMsg();
+    }
     render(){
         const user = this.props.user
 		const {pathname} = this.props.location
