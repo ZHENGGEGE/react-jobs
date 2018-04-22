@@ -39,7 +39,6 @@ class Chat extends React.Component{
         if(!users[userid]){
             return null
         }
-        console.log(this.props)
         return(
             <div id="chat-page">
                 <NavBar 
@@ -51,9 +50,12 @@ class Chat extends React.Component{
                     {users[userid].name}
                 </NavBar>
                 {this.props.chat.chatmsg.map(v => {
+                    const avatar = require(`../img/${users[v.from].avatar}.png`)
+                    //const avatar = require(`../img/boy.png`)
                     return v.from==userid?(
                         <List key={v._id}>
                             <Item 
+                                thumb={avatar}
                                 >
                                 {v.content}
                             </Item>
@@ -62,6 +64,7 @@ class Chat extends React.Component{
                         <List key={v._id}>
                             <Item 
                                 className="chat-me"
+                                extra={<img src={avatar} />}
                                 >
                                 {v.content}
                             </Item>

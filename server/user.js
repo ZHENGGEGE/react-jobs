@@ -27,7 +27,7 @@ Router.get('/getmsglist',function(req,res){
 			}
 		})
 
-	})
+    })
 	// {'$or':[{from:user,to:user}]}
 
 })
