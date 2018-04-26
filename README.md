@@ -3,6 +3,8 @@ react 实时聊天app
 
 技术栈：react，ant-mobile,express
 
+环境：安装node，mongodb
+
 启动项目步骤：
 
 
