@@ -1,5 +1,5 @@
 import React from 'react'
-import { List,InputItem,NavBar,Icon } from 'antd-mobile'
+import { List,InputItem,NavBar,Icon,Grid } from 'antd-mobile'
 import io from 'socket.io-client'
 import {connect} from 'react-redux'
 import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux'
@@ -37,7 +37,7 @@ class Chat extends React.Component{
         const users = this.props.chat.users
         const Item = List.Item;
         const emoji = '😀 😃 😄 😁 😆 😅 😂 😊 😇 🙂 🙃 😉 😌 😍 😘 😗 😙 😚 😋 😜 😝 😛 🤑 🤗 🤓 😎 😏 😒 😞 😔 😟 😕 🙁 😣 😖 😫 😩 😤 😠 😡 😶 😐 😑 😯 😦 😧 😮 😲 😵 😳 😱 😨 😰 😢 😥 😭 😓 😪 😴 🙄 🤔 😬 🤐 😷 🤒 🤕 😈 👿 👹 👺 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 😺 😸 😹 😻 😼 😽 🙀 😿 😾 👐 🙌 👏 🙏 👍 👎 👊 ✊ 🤘 👌 👈 👉 👆 👇 ✋  🖐 🖖 👋  💪 🖕 ✍️  💅 🖖 💄 💋 👄 👅 👂 👃 👁 👀 '
-                        .split()
+                        .split(' ')
                         .filter(v=>v)
                         .map(v => ({text:v}))
         
@@ -91,6 +91,12 @@ class Chat extends React.Component{
                             }>发送</span>}
                         ></InputItem>
                     </List>
+                    <Grid
+                        isCarousel={true}
+                        carouselMaxRow={4}
+                        columnNum={9}
+                        data={emoji} 
+                    />
                 </div>
             </div>
         )
