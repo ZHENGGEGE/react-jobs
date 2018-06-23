@@ -24,13 +24,22 @@ class Chat extends React.Component{
             this.props.getMsgList();
             this.props.recvMsg();
         }
+        
+    }
+    fixCarousel(){
+        setTimeout(function(){
+            window.dispatchEvent(new Event('resize'))
+        },0)
     }
     handleSubmit(){
         const from = this.props.user._id
         const to = this.props.match.params.user
         const msg = this.state.text
         this.props.sendMsg({from,to,msg})
-        this.setState({text:''})
+        this.setState({
+            text:'',
+            showEmoji:false
+        })
     }
     render(){
         const userid = this.props.match.params.user;
@@ -86,17 +95,36 @@ class Chat extends React.Component{
                             onChange={v =>{
                                 this.setState({text:v})
                             }}
-                            extra={<span onClick={() => 
-                                this.handleSubmit()
-                            }>发送</span>}
-                        ></InputItem>
+                            extra={
+                                <div>
+                                    <span
+                                        style={{ marginRight: 15 }}
+                                        onClick={() => {
+                                            this.setState({
+                                                showEmoji: !this.state.showEmoji
+                                            })
+                                            this.fixCarousel()
+                                        }}
+                                    >😃</span>
+                                    <span onClick={() => this.handleSubmit()}>发送</span>
+                                </div>}
+                        >
+                        </InputItem>
                     </List>
-                    <Grid
+                    {this.state.showEmoji ?
+                        <Grid
                         isCarousel={true}
                         carouselMaxRow={4}
                         columnNum={9}
                         data={emoji} 
+                        onClick={(el)=>{
+                            this.setState({
+                                text:this.state.text+el.text
+                            })
+                        }}
                     />
+                        :null}
+                    
                 </div>
             </div>
         )
